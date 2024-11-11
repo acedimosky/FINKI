@@ -1,0 +1,37 @@
+import java.util.Scanner;
+import java.util.Arrays;
+public class Main {
+
+    static int numFinder(int[] niza, int num){
+        int start = 0;
+        int end = niza.length - 1;
+        int mid;
+        while(start <= end) {
+            mid = (start + end) / 2;
+            if (niza[mid] == num)
+                return mid;
+            else if (niza[mid] > num)
+                end = mid - 1;
+            else
+                start = mid + 1;
+        }
+        return -1;
+
+    }
+
+    public static void main(String[] args) {
+        int n, m;
+        Scanner in = new Scanner(System.in);
+        n = in.nextInt();
+        m = in.nextInt();
+        int[] nizaa = new int[n];
+        for(int i=0; i<n; i++){
+            nizaa[i] = in.nextInt();
+        }
+        if(numFinder(nizaa, m) == -1){
+            System.out.println("Ne postoi");
+        } else {
+            System.out.println(numFinder(nizaa, m));
+        }
+    }
+}
